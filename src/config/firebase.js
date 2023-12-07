@@ -15,12 +15,12 @@ import { useEffect, useState } from "react";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyB9FByP819Nr9gQWdTQMZMg2KLsjvU20_A",
-  authDomain: "credit-link-5e299.firebaseapp.com",
-  projectId: "credit-link-5e299",
-  storageBucket: "credit-link-5e299.appspot.com",
-  messagingSenderId: "962325798376",
-  appId: "1:962325798376:web:7269c769c59ffae1a1985d",
+  apiKey: import.meta.env.VITE_APP_API_KEY,
+  authDomain:import.meta.env.VITE_APP_API_KEY_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_APP_API_KEY_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_APP_API_KEY_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_APP_API_KEY_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_API_KEY_APP_ID,
 };
 
 // Initialize Firebase
@@ -44,7 +44,8 @@ export const signUpWithGoogle = async () => {
         email: user.email,
         displayName: user.displayName,
         photoURL: user.photoURL,
-        // phone number
+        phoneNumber: user.phoneNumber,
+        userID: user.uid,
         // user id
       });
     }

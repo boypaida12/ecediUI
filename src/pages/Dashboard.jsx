@@ -7,7 +7,7 @@ import {Text, Box, Flex, useToast} from '@chakra-ui/react'
 
 const Dashboard = () => {
   const currentUser = useAuth();
-  const userEmail = currentUser && currentUser.email;
+  const userName = currentUser && currentUser.displayName;
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
@@ -50,9 +50,9 @@ const Dashboard = () => {
               navbarScroll
             >
                 {/* currentUser email shows here in nav */}
-                {userEmail && (
+                {userName && (
                 <Nav.Item className="ms-auto my-2 my-lg-0">
-                  <Text className=" text-success align-se">Logged in as: {userEmail}</Text>
+                  <Text fontWeight="bold" colorScheme="green" alignSelf="center">Logged in as: {userName}</Text>
                 </Nav.Item>
               )}
               <Button onClick={handleLogout} variant="outline-danger" isLoading={isLoading}>Logout</Button>
