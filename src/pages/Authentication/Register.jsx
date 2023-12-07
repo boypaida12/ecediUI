@@ -11,7 +11,7 @@ const Register = () => {
   const handleGoogleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await signInWithGoogle();
+      await signUpWithGoogle();
       toast({
         description: "Successfully Registered",
         duration: 3000,

@@ -51,8 +51,8 @@ const Dashboard = () => {
             >
                 {/* currentUser email shows here in nav */}
                 {userName && (
-                <Nav.Item className="ms-auto my-2 my-lg-0">
-                  <Text fontWeight="bold" colorScheme="green" alignSelf="center">Logged in as: {userName}</Text>
+                <Nav.Item className="ms-auto my-lg-0">
+                  <Text fontWeight="bold" colorScheme="green" alignSelf="center" me={5} mt={2}>{userName}</Text>
                 </Nav.Item>
               )}
               <Button onClick={handleLogout} variant="outline-danger" isLoading={isLoading}>Logout</Button>
