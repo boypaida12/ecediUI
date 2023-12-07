@@ -4,13 +4,19 @@ import { useParams, useNavigate } from "react-router-dom";
 import commoditiesData from "../components/commodityData";
 import { Flex, Image, Text, Container, Box, Button } from "@chakra-ui/react";
 import Register from "./Authentication/Register";
+import Navigation from "../components/navbar/Navigation";
+import { useAuth } from "../config/firebase";
 
 const CommodityDetails = () => {
-
+  const currentUser = useAuth();
   const navigate = useNavigate();
-  const handleBidAuth = ()=> {
-    navigate({to:'/register'})
-    console.log("register page not showing")
+  const handleBidAuth = () => {
+    if (!currentUser) {
+      navigate("/register");
+      return;
+    }
+    // Navigate to dashboard directly after authentication
+    navigate("/dashboard");
   };
   const { name } = useParams();
   const commodityType = commoditiesData.find(
@@ -22,35 +28,43 @@ const CommodityDetails = () => {
   }
   return (
     <>
+      <Navigation />
       <Container maxW={1300} mt={5}>
         <Flex gap={10}>
           <Box>
             <Image
-              src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-              alt="Green double couch with wooden legs"
+              src={commodityType.src}
               borderRadius="lg"
               shadow="lg"
               width={400}
             />
           </Box>
           <Box position="relative">
-              <Text fontWeight="bold">
-                Commodity Name :{" "}
-                <Text as="span" fontWeight="normal">
-                  {commodityType.name}
-                </Text>
+            <Text fontWeight="bold">
+              Commodity Name :{" "}
+              <Text as="span" fontWeight="normal">
+                {commodityType.name}
               </Text>
-              <Text fontWeight="bold">
-                Commodity Description :{" "}
-                <Text as="span" fontWeight="normal">
-                  {commodityType.description}
-                </Text>
+            </Text>
+            <Text fontWeight="bold">
+              Commodity Description :{" "}
+              <Text as="span" fontWeight="normal">
+                {commodityType.description}
               </Text>
-              <Button type="button" colorScheme="green" px={10} position="absolute" bottom={0} onClick={handleBidAuth}>Bid</Button>
+            </Text>
+            <Button
+              type="button"
+              colorScheme="green"
+              px={10}
+              position="absolute"
+              bottom={0}
+              onClick={handleBidAuth}
+            >
+              Bid
+            </Button>
           </Box>
         </Flex>
       </Container>
-      <Register/>
     </>
   );
 };

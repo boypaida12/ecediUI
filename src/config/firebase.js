@@ -5,6 +5,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -65,6 +66,10 @@ export const signInWithGoogle = async () => {
     return null;
   }
 };
+
+export const logout = () => {
+    return signOut(auth);
+  };
 
 //  custom hook to get current User
 export const useAuth = () => {
