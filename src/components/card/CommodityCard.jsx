@@ -24,7 +24,7 @@ const CommodityCard = ({ cropDescription, cropName, cropPrice, name, src }) => {
         <CardBody>
           <Box h={64}>
               <Image
-                src={src}
+                src= "https://media.istockphoto.com/id/541989982/photo/bags-of-feed.jpg?s=612x612&w=0&k=20&c=VTZ3pgIv6eZZwHZUlVzKce5D_fHebOiYck4KXyT3tRA="
                 borderRadius="lg"
               />
           </Box>
