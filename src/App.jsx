@@ -11,6 +11,7 @@ import FarmerAuth from "./pages/Authentication/FarmerAuth";
 import BuyerAuth from "./pages/Authentication/BuyerAuth";
 import BuyerDashboard from "./pages/BuyerDashboard";
 import BuyerBid from "./pages/buyer-bid-page/BuyerBid";
+import EscrowBid from "./pages/buyer-bid-page/EscrowBid";
 
 {
   /* <Navigation/>
@@ -31,6 +32,7 @@ function App() {
         <Route exact path="/farmer-dashboard" element={<FarmerDashboard />} />
         <Route exact path="/buyer-dashboard" element={<BuyerDashboard />} />
         <Route path="/buyer-bid" element={<BuyerBid />} />
+        <Route path="/escrow-bid" element={<EscrowBid />} />
       </>
     )
   );

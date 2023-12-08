@@ -14,21 +14,37 @@ import {
   SimpleGrid,
   Flex,
 } from "@chakra-ui/react";
+import EscrowBid from "./EscrowBid";
 
 const BuyerBid = () => {
   const posts = [
     {
-      img: "https://cdn.pixabay.com/photo/2019/12/17/14/43/christmas-4701783__340.png",
+      img: "https://media.istockphoto.com/id/541989982/photo/bags-of-feed.jpg?s=612x612&w=0&k=20&c=VTZ3pgIv6eZZwHZUlVzKce5D_fHebOiYck4KXyT3tRA=",
       content:
         "Crop Name: Maize   Delivery Location:  Kenya Quantity: 10 Tons      Delivery Timeframe: 01 Dec ",
     },
     {
-      img: "https://cdn.pixabay.com/photo/2019/12/17/14/43/christmas-4701783__340.png",
+      img: "https://media.istockphoto.com/id/541989982/photo/bags-of-feed.jpg?s=612x612&w=0&k=20&c=VTZ3pgIv6eZZwHZUlVzKce5D_fHebOiYck4KXyT3tRA=",
       content:
         "Crop Name: Maize   Delivery Location:  Kenya Quantity: 10 Tons      Delivery Timeframe: 01 Dec ",
     },
     {
-      img: "https://cdn.pixabay.com/photo/2019/12/17/14/43/christmas-4701783__340.png",
+      img: "https://media.istockphoto.com/id/541989982/photo/bags-of-feed.jpg?s=612x612&w=0&k=20&c=VTZ3pgIv6eZZwHZUlVzKce5D_fHebOiYck4KXyT3tRA=",
+      content:
+        "Crop Name: Maize   Delivery Location:  Kenya Quantity: 10 Tons      Delivery Timeframe: 01 Dec ",
+    },
+    {
+      img: "https://media.istockphoto.com/id/541989982/photo/bags-of-feed.jpg?s=612x612&w=0&k=20&c=VTZ3pgIv6eZZwHZUlVzKce5D_fHebOiYck4KXyT3tRA=",
+      content:
+        "Crop Name: Maize   Delivery Location:  Kenya Quantity: 10 Tons      Delivery Timeframe: 01 Dec ",
+    },
+    {
+      img: "https://media.istockphoto.com/id/541989982/photo/bags-of-feed.jpg?s=612x612&w=0&k=20&c=VTZ3pgIv6eZZwHZUlVzKce5D_fHebOiYck4KXyT3tRA=",
+      content:
+        "Crop Name: Maize   Delivery Location:  Kenya Quantity: 10 Tons      Delivery Timeframe: 01 Dec ",
+    },
+    {
+      img: "https://media.istockphoto.com/id/541989982/photo/bags-of-feed.jpg?s=612x612&w=0&k=20&c=VTZ3pgIv6eZZwHZUlVzKce5D_fHebOiYck4KXyT3tRA=",
       content:
         "Crop Name: Maize   Delivery Location:  Kenya Quantity: 10 Tons      Delivery Timeframe: 01 Dec ",
     },
@@ -57,8 +73,8 @@ const BuyerBid = () => {
           <Divider />
           <CardFooter>
             <ButtonGroup spacing="2">
-              <Button variant="solid" colorScheme="blue">
-                Accept
+              <Button variant="solid" colorScheme="">
+                <EscrowBid />
               </Button>
               <Button variant="ghost" colorScheme="blue">
                 Decline
