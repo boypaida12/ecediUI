@@ -27,10 +27,10 @@ const CommodityDetails = () => {
     }
   };
   const handleBidAuth = async () => {
-    // if (!currentUser) {
-    //   navigate("/register-as-farmer");
-    //   return;
-    // }
+    if (!currentUser) {
+      navigate("/register-as-farmer");
+      return;
+    }
     //fund wallet
     //create Bid
      let status = await createBid("65731c2b290325ec2dee0605",id)
