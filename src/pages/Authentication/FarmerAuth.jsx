@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import Navigation from "../../components/navbar/Navigation";
 import { signInWithGoogle, signUpWithGoogle } from "../../config/firebase";
 
-const Register = () => {
+const FarmerAuth = () => {
   const toast = useToast();
   const navigate = useNavigate();
+
   const handleGoogleSignUp = async (e) => {
     e.preventDefault();
     try {
@@ -18,11 +19,16 @@ const Register = () => {
         status: "success",
         colorScheme: "green",
       });
+      navigate({ pathname: "/farmer-dashboard" });
     } catch (error) {
-      console.log(error);
+      if (error.code === "auth/popup-closed-by-user") {
+        return;
+      } else {
+        console.log(error);
+      }
     }
-    navigate({ pathname: "/dashboard" });
   };
+
   return (
     <>
       <Navigation />
@@ -52,12 +58,11 @@ const Register = () => {
                 filter: "brightness(50%)", // Adjust the brightness percentage as needed
               }}
             ></Box>
-            <Text as="h1">Join</Text>
             <Flex
               direction="column"
               alignItems="center"
               justifyContent="center"
-              h={250}
+              h={350}
             >
               <Button onClick={handleGoogleSignUp} py={8} px={10} fontSize="1.5rem" rounded="2xl">
                 <svg
@@ -95,4 +100,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default FarmerAuth;

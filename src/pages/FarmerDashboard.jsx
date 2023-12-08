@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { logout, useAuth } from "../config/firebase";
 import {Text, Box, Flex, useToast} from '@chakra-ui/react'
 
-const Dashboard = () => {
+const FarmerDashboard = () => {
   const currentUser = useAuth();
   const userName = currentUser && currentUser.displayName;
   const [isLoading, setIsLoading] = useState(false);
@@ -61,10 +61,10 @@ const Dashboard = () => {
         </Container>
       </Navbar>
       <Flex minH="80vh" direction="column" justifyContent="center" alignItems="center">
-        <Text as="h1">Dashboard Data goes here</Text>
+        <Text as="h1">Dashboard</Text>
       </Flex>
     </>
   );
 };
 
-export default Dashboard;
+export default FarmerDashboard;

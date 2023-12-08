@@ -3,7 +3,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import commoditiesData from "../components/commodityData";
 import { Flex, Image, Text, Container, Box, Button } from "@chakra-ui/react";
-import Register from "./Authentication/Register";
+import Register from "./Authentication/FarmerAuth";
 import Navigation from "../components/navbar/Navigation";
 import { useAuth } from "../config/firebase";
 
@@ -12,12 +12,13 @@ const CommodityDetails = () => {
   const navigate = useNavigate();
   const handleBidAuth = () => {
     if (!currentUser) {
-      navigate("/register");
+      navigate("/register-as-farmer");
       return;
     }
     // Navigate to dashboard directly after authentication
-    navigate("/dashboard");
+    navigate("/farmer-dashboard");
   };
+  
   const { name } = useParams();
   const commodityType = commoditiesData.find(
     (commodityType) => commodityType.name === name

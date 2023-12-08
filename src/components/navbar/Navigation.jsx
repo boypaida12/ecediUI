@@ -21,8 +21,8 @@ const Navigation = () => {
             <Nav.Link href="#" disabled>
               Link
             </Nav.Link> */}
-            <Button variant="outline-success" className='me-3' as={Link} to="/register">Farmer</Button>
-            <Button variant="success">Buyer</Button>
+            <Button variant="outline-success" className='me-3' as={Link} to="/register-as-farmer">Farmer</Button>
+            <Button variant="success" as={Link} to="/register-as-buyer">Buyer</Button>
           </Nav>
         </Navbar.Collapse>
       </Container>
