@@ -10,6 +10,7 @@ import FarmerDashboard from "./pages/FarmerDashboard";
 import FarmerAuth from "./pages/Authentication/FarmerAuth";
 import BuyerAuth from "./pages/Authentication/BuyerAuth";
 import SideNav from "./components/sidenav/SideNav";
+import BuyerDashboard from "./pages/BuyerDashboard";
 
 {
   /* <Navigation/>
@@ -26,10 +27,11 @@ function App() {
         <Route exact path="sidenav" element={<SideNav />} />
         <Route
           exact
-          path="/learn-more/commodity-details/:name"
+          path="/commodity-details/:id"
           element={<CommodityDetails />}
         />
         <Route exact path="/farmer-dashboard" element={<FarmerDashboard />}/>
+        <Route exact path="/buyer-dashboard" element={<BuyerDashboard />}/>
       </>
     )
   );

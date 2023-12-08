@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 
-const FarmerDashboard = () => {
+const BuyerDashboard = () => {
   const currentUser = useAuth();
   const userName = currentUser && currentUser.displayName;
   const [isLoading, setIsLoading] = useState(false);
@@ -47,31 +47,13 @@ const FarmerDashboard = () => {
     }
   };
 
-  const [farmerDetails, setFarmerDetails] = useState([]);
 
-  const farmer = async () => {
-    try {
-      let getData = await axios(
-        "https://ecedilink.onrender.com/user"
-      );
-      console.log(getData.data);
-      setFarmerDetails(getData.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    farmer();
-  }, []);
 
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand as={Link} to="/farmer-dashboard">
+          <Navbar.Brand as={Link} to="/buyer-dashboard">
             CreditLink
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -86,12 +68,12 @@ const FarmerDashboard = () => {
                 <Nav.Item className="ms-auto my-lg-0">
                   <Text
                     fontWeight="bold"
-                    color="green"
+                    colorScheme="green"
                     alignSelf="center"
                     me={5}
                     mt={2}
                   >
-                    Welcome Farmer <Text as="span" fontWeight="normal" color="black">{userName}</Text>
+                    Welcome Buyer {userName}
                   </Text>
                 </Nav.Item>
               )}
@@ -108,11 +90,12 @@ const FarmerDashboard = () => {
       </Navbar>
       <Flex
         minH="80vh"
+        direction="column"
       >
-
+        
       </Flex>
     </>
   );
 };
 
-export default FarmerDashboard;
+export default BuyerDashboard;

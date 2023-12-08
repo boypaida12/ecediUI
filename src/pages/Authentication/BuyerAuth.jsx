@@ -12,7 +12,7 @@ const BuyerAuth = () => {
   const handleGoogleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await signUpWithGoogle();
+      await signUpWithGoogle("Buyer");
       toast({
         description: "Successfully Registered",
         duration: 3000,
