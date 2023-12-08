@@ -189,10 +189,11 @@ const BuyerDashboard = () => {
       </Navbar>
 
       <Flex mt={10} mx={20}>
-
-        <Button style={{marginLeft: "auto"}} leftIcon={<IconPencilPlus />} className="py-2" colorScheme='blue'>
-          + Create Order
-        </Button>
+        <Link href='https://google.com'>
+          <Button style={{ marginLeft: "auto" }} leftIcon={<IconPencilPlus />} className="py-2" colorScheme='blue'>
+            + Create Order
+          </Button>
+        </Link>
       </Flex>
 
       <Flex py="4%" px="4%" bg='white'>
