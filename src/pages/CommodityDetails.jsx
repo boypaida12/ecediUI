@@ -1,15 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import commoditiesData from "../components/commodityData";
 import { Flex, Image, Text, Container, Box, Button } from "@chakra-ui/react";
 import Register from "./Authentication/FarmerAuth";
 import Navigation from "../components/navbar/Navigation";
 import { useAuth } from "../config/firebase";
+import axios from "axios";
 
 const CommodityDetails = () => {
   const currentUser = useAuth();
   const navigate = useNavigate();
+  const [orderDetails, setOrderDetails] = useState({});
   const handleBidAuth = () => {
     if (!currentUser) {
       navigate("/register-as-farmer");
@@ -19,12 +21,27 @@ const CommodityDetails = () => {
     navigate("/farmer-dashboard");
   };
   
-  const { name } = useParams();
-  const commodityType = commoditiesData.find(
-    (commodityType) => commodityType.name === name
-  );
+  const { id } = useParams();
+  
+  const commodityOrders = async () => {
+    try {
+      let getData = await axios("https://ecedilink.onrender.com/orders");
+      console.log(getData.data);
+      const commodityType = getData.data.find(
+        (commodityType) => commodityType._id === id
+      );
+      setOrderDetails(commodityType)
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  if (!commodityType) {
+  useEffect(() => {
+    commodityOrders();
+  }, []);
+
+
+  if (!orderDetails) {
     return <div>Program not found</div>;
   }
   return (
@@ -34,7 +51,7 @@ const CommodityDetails = () => {
         <Flex gap={10}>
           <Box>
             <Image
-              src={commodityType.src}
+              src="https://media.istockphoto.com/id/541989982/photo/bags-of-feed.jpg?s=612x612&w=0&k=20&c=VTZ3pgIv6eZZwHZUlVzKce5D_fHebOiYck4KXyT3tRA="
               borderRadius="lg"
               shadow="lg"
               width={400}
@@ -44,13 +61,13 @@ const CommodityDetails = () => {
             <Text fontWeight="bold">
               Commodity Name :{" "}
               <Text as="span" fontWeight="normal">
-                {commodityType.name}
+                {orderDetails.cropName}
               </Text>
             </Text>
             <Text fontWeight="bold">
               Commodity Description :{" "}
               <Text as="span" fontWeight="normal">
-                {commodityType.description}
+                {orderDetails.description}
               </Text>
             </Text>
             <Button
