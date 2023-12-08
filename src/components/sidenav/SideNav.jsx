@@ -6,7 +6,9 @@ import {
     Flex,
     Divider,
   } from "@chakra-ui/react";
-  import { FaHome, FaUser, FaCog } from 'react-icons/fa';
+  import { FaHome, FaUser, FaCog, FaCartArrowDown } from 'react-icons/fa';
+  import { ChevronRightIcon } from '@chakra-ui/icons'
+import { Link } from "react-router-dom";
 
 export default function SideNav() {
     const menu = [
@@ -29,11 +31,11 @@ export default function SideNav() {
     ]
   return (
     <Box h='100vh' w='250px' bg='white' padding='20px' color='#000' boxShadow='2px 0px 4px rgba(0, 0, 0, 0.1)'>
-    <Flex flexDir='column' justify='space-between'>
-        <Heading fontSize='2xl'>CREDIT LINK</Heading>
+    <Flex flexDir='column'>
+        <Heading fontSize='2xl' textAlign='center'>CREDIT LINK</Heading>
         <Divider />
 
-        <Flex flexDir='column' justify='space-between'>
+        <Flex flexDir='column' justify='space-around' as={Link}>
             {menu.map((item, index) => (
                 <Flex
                     key={index}
@@ -48,8 +50,8 @@ export default function SideNav() {
                     mb='15px'
                 >
                     {item.icon === 'home' && <FaHome size={20} />}
-                    {item.icon === 'user' && <FaUser size={20} />}
-                    {item.icon === 'cog' && <FaCog size={20} />}
+                    {item.icon === 'user' && <FaCartArrowDown size={20}/>}
+                    {item.icon === 'cog' && <FaUser size={20} />}
                     <Text ml='3' mt='15px'>{item.name}</Text>
                 </Flex>
             ))}
@@ -58,13 +60,15 @@ export default function SideNav() {
             <Text>Balance</Text>
             <Button mt='2'>10,000 Ghs</Button>
         </Flex>
-        <Flex flexDir='column' alignItems='left' mt='50px'>
+        
+        <Divider mt='100px'/>
+        <Flex as={Link} flexDir='row' alignItems='left'  gap={2} justify='center' align='center'>
             <FaUser size={20}/>
             <Text> Sign Out </Text>
+            <ChevronRightIcon mt='5px'/>
         </Flex>
     </Flex>
 </Box>
-
     
   )
 }
