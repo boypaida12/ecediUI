@@ -9,6 +9,7 @@ import CommodityDetails from "./pages/CommodityDetails";
 import Register from "./pages/Authentication/Register";
 import Dashboard from "./pages/Dashboard";
 import SideBar from "./components/sideBar/SideBar";
+import BuyerCard from "./components/card/buyerCard/BuyerCard";
 
 {
   /* <Navigation/>
@@ -18,7 +19,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route index element={<SideBar />} />
+        <Route index element={<BuyerCard />} />
         {/* <Route exact path="register" element={<Register />} />
         <Route
           exact

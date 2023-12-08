@@ -1,0 +1,54 @@
+.buyerCardContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.cardItems {
+  padding: 1.2rem;
+  border-radius: 2rem;
+  border: 1px solid black;
+  transition: var(--transition);
+}
+
+.cardItems:hover {
+  border-color: var(--color-primary-variant);
+  background: transparent;
+}
+
+.cardItemsImage {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  height: 40%;
+}
+
+.cardItems p {
+  margin: 0.5rem 0 1.2rem 0;
+  font-size: 0.8rem;
+}
+
+.buyerCardItemContent {
+  height: 45%;
+}
+
+.cardItemsCta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* ===============================  MEDIA QUERY (MEDIUM DEVICES) ========================== */
+@media screen and (max-width: 1024px) {
+  .buyerCardContainer {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+}
+
+/* ===============================  MEDIA QUERY (SMALL DEVICES) ========================== */
+@media screen and (max-width: 600px) {
+  .buyerCardContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
