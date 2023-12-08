@@ -18,19 +18,16 @@ import {
 const BuyerBid = () => {
   const posts = [
     {
-      title: "React Tailwind Card with Grid 1",
       img: "https://cdn.pixabay.com/photo/2019/12/17/14/43/christmas-4701783__340.png",
       content:
         "Crop Name: Maize   Delivery Location:  Kenya Quantity: 10 Tons      Delivery Timeframe: 01 Dec ",
     },
     {
-      title: "React Tailwind Card with Grid 2",
       img: "https://cdn.pixabay.com/photo/2019/12/17/14/43/christmas-4701783__340.png",
       content:
         "Crop Name: Maize   Delivery Location:  Kenya Quantity: 10 Tons      Delivery Timeframe: 01 Dec ",
     },
     {
-      title: "React Tailwind Card with Grid 3",
       img: "https://cdn.pixabay.com/photo/2019/12/17/14/43/christmas-4701783__340.png",
       content:
         "Crop Name: Maize   Delivery Location:  Kenya Quantity: 10 Tons      Delivery Timeframe: 01 Dec ",
@@ -50,7 +47,9 @@ const BuyerBid = () => {
               <Heading size="md">{post.title}</Heading>
               <Flex direction="column" align="flex-start">
                 {post.content.split("\n").map((line, i) => (
-                  <Text key={i}>{line}</Text>
+                  <Text key={i}>
+                    <span fontWeight="bold"> {line}</span>
+                  </Text>
                 ))}
               </Flex>
             </Stack>
@@ -59,10 +58,10 @@ const BuyerBid = () => {
           <CardFooter>
             <ButtonGroup spacing="2">
               <Button variant="solid" colorScheme="blue">
-                Buy now
+                Accept
               </Button>
               <Button variant="ghost" colorScheme="blue">
-                Add to cart
+                Decline
               </Button>
             </ButtonGroup>
           </CardFooter>
