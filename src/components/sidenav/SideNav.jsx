@@ -6,7 +6,9 @@ import {
     Flex,
     Divider,
   } from "@chakra-ui/react";
-  import { FaHome, FaUser, FaCog, FaCartArrowDown } from 'react-icons/fa';
+  import { FaUser,  FaCartArrowDown } from 'react-icons/fa';
+  import { GiShop } from "react-icons/gi";
+  import { LuUserCircle } from "react-icons/lu";
   import { ChevronRightIcon } from '@chakra-ui/icons'
 import { Link } from "react-router-dom";
 
@@ -49,7 +51,7 @@ export default function SideNav() {
                     alignItems='center'
                     mb='15px'
                 >
-                    {item.icon === 'home' && <FaHome size={20} />}
+                    {item.icon === 'home' && <GiShop size={20} />}
                     {item.icon === 'user' && <FaCartArrowDown size={20}/>}
                     {item.icon === 'cog' && <FaUser size={20} />}
                     <Text ml='3' mt='15px'>{item.name}</Text>
@@ -57,13 +59,13 @@ export default function SideNav() {
             ))}
         </Flex>
         <Flex flexDir='column' alignItems='left' mt='50px'>
-            <Text>Balance</Text>
+            <Text textAlign='left'>Balance</Text>
             <Button mt='2'>10,000 Ghs</Button>
         </Flex>
         
         <Divider mt='100px'/>
         <Flex as={Link} flexDir='row' alignItems='left'  gap={2} justify='center' align='center'>
-            <FaUser size={20}/>
+            <LuUserCircle size={20}/>
             <Text> Sign Out </Text>
             <ChevronRightIcon mt='5px'/>
         </Flex>
