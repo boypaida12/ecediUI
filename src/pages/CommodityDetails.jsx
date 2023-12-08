@@ -12,12 +12,31 @@ const CommodityDetails = () => {
   const currentUser = useAuth();
   const navigate = useNavigate();
   const [orderDetails, setOrderDetails] = useState({});
-  const handleBidAuth = () => {
-    if (!currentUser) {
-      navigate("/register-as-farmer");
-      return;
+
+  const createBid = async (farmerId, orderId) => {
+    try {
+      const url = 'https://ecedilink.onrender.com/bid';
+      const data = {
+        farmerId: farmerId,
+        orderId: orderId
+      };
+      const response = await axios.post(url, data);
+      console.log("the response",response.data); // Handle the response as needed
+    } catch (error) {
+      console.error('Error:', error);
     }
+  };
+  const handleBidAuth = async () => {
+    // if (!currentUser) {
+    //   navigate("/register-as-farmer");
+    //   return;
+    // }
+    //fund wallet
+    //create Bid
+     let status = await createBid("65731c2b290325ec2dee0605",id)
+     console.log("status is", status)
     // Navigate to dashboard directly after authentication
+    alert("created a bid successfully")
     navigate("/farmer-dashboard");
   };
   

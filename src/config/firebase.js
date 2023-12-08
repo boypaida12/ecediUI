@@ -105,6 +105,10 @@ const postDataToBackend = async (farmerString, email, displayName, uuid) => {
     if (response.ok) {
       const responseData = await response.json();
       console.log('Response from server:', responseData.generalInfo);
+      console.log("user id", responseData)
+      sessionStorage.setItem('userId', responseData.uuid);
+      sessionStorage.setItem('walletId', responseData.uuid);
+      sessionStorage.setItem('example', "example.com");
       createWallet(
         responseData.generalInfo.uuid,
       )
