@@ -86,12 +86,12 @@ const FarmerDashboard = () => {
                 <Nav.Item className="ms-auto my-lg-0">
                   <Text
                     fontWeight="bold"
-                    colorScheme="green"
+                    color="green"
                     alignSelf="center"
                     me={5}
                     mt={2}
                   >
-                    {userName}
+                    Welcome Farmer <Text as="span" fontWeight="normal" color="black">{userName}</Text>
                   </Text>
                 </Nav.Item>
               )}
@@ -108,13 +108,8 @@ const FarmerDashboard = () => {
       </Navbar>
       <Flex
         minH="80vh"
-        direction="column"
       >
-        {farmerDetails.map((farmer) => (
-          <Box key={farmer._id}>
-            <Heading>{farmer.generalInfo.name}</Heading>
-          </Box>
-        ))}
+
       </Flex>
     </>
   );
