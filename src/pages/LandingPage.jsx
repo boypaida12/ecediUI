@@ -36,7 +36,7 @@ const LandingPage = () => {
             <Spinner size="xl" />
           </Flex>
         ) : (
-          <Flex gap={5} mt={5}>
+          <Flex gap={5} mt={5} flexWrap="wrap">
             {orders.map((order) => (
               <CommodityCard
                 key={order._id} // Use `_id` as the unique key
