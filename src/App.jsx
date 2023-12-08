@@ -24,7 +24,7 @@ function App() {
 
         <Route exact path="register-as-farmer" element={<FarmerAuth />} />
         <Route exact path="register-as-buyer" element={<BuyerAuth />} />
-        <Route exact path="sidenav" element={<SideNav />} />
+        <Route exact path="farmercard" element={<SideNav />} />
         <Route
           exact
           path="/commodity-details/:id"
