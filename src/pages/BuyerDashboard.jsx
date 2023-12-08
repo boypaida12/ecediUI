@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 
-const FarmerDashboard = () => {
+const BuyerDashboard = () => {
   const currentUser = useAuth();
   const userName = currentUser && currentUser.displayName;
   const [isLoading, setIsLoading] = useState(false);
@@ -47,31 +47,13 @@ const FarmerDashboard = () => {
     }
   };
 
-  const [farmerDetails, setFarmerDetails] = useState([]);
 
-  const farmer = async () => {
-    try {
-      let getData = await axios(
-        "https://ecedilink.onrender.com/user"
-      );
-      console.log(getData.data);
-      setFarmerDetails(getData.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    farmer();
-  }, []);
 
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand as={Link} to="/farmer-dashboard">
+          <Navbar.Brand as={Link} to="/buyer-dashboard">
             CreditLink
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -91,7 +73,7 @@ const FarmerDashboard = () => {
                     me={5}
                     mt={2}
                   >
-                    {userName}
+                    Welcome Buyer {userName}
                   </Text>
                 </Nav.Item>
               )}
@@ -110,14 +92,10 @@ const FarmerDashboard = () => {
         minH="80vh"
         direction="column"
       >
-        {farmerDetails.map((farmer) => (
-          <Box key={farmer._id}>
-            <Heading>{farmer.generalInfo.name}</Heading>
-          </Box>
-        ))}
+        
       </Flex>
     </>
   );
 };
 
-export default FarmerDashboard;
+export default BuyerDashboard;
