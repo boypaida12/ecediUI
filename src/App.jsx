@@ -9,6 +9,7 @@ import CommodityDetails from "./pages/CommodityDetails";
 import FarmerDashboard from "./pages/FarmerDashboard";
 import FarmerAuth from "./pages/Authentication/FarmerAuth";
 import BuyerAuth from "./pages/Authentication/BuyerAuth";
+import SideNav from "./components/sidenav/SideNav";
 import BuyerDashboard from "./pages/BuyerDashboard";
 
 {
@@ -20,8 +21,10 @@ function App() {
     createRoutesFromElements(
       <>
         <Route index element={<LandingPage />} />
+
         <Route exact path="register-as-farmer" element={<FarmerAuth />} />
         <Route exact path="register-as-buyer" element={<BuyerAuth />} />
+        <Route exact path="sidenav" element={<SideNav />} />
         <Route
           exact
           path="/commodity-details/:id"
