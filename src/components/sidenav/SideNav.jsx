@@ -1,5 +1,4 @@
 import {
-    Heading,
     Text,
     Button,
     Box,
@@ -32,9 +31,8 @@ export default function SideNav() {
         }
     ]
   return (
-    <Box h='100vh' w='250px' bg='white' padding='20px' color='#000' boxShadow='2px 0px 4px rgba(0, 0, 0, 0.1)'>
+    <Box h='90vh' w='250px' bg='white' padding='20px' color='#000' boxShadow='2px 0px 4px rgba(0, 0, 0, 0.1)'>
     <Flex flexDir='column'>
-        <Heading fontSize='2xl' textAlign='center'>CREDIT LINK</Heading>
         <Divider />
 
         <Flex flexDir='column' justify='space-around' as={Link}>
@@ -58,12 +56,12 @@ export default function SideNav() {
                 </Flex>
             ))}
         </Flex>
-        <Flex flexDir='column' alignItems='left' mt='50px'>
+        <Flex flexDir='column' alignItems='left' mt={10}>
             <Text textAlign='left'>Balance</Text>
             <Button mt='2'>10,000 Ghs</Button>
         </Flex>
         
-        <Divider mt='100px'/>
+        <Divider mt={5}/>
         <Flex as={Link} flexDir='row' alignItems='left'  gap={2} justify='center' align='center'>
             <LuUserCircle size={20}/>
             <Text> Sign Out </Text>

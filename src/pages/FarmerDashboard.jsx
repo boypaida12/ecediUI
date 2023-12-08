@@ -17,6 +17,7 @@ import {
   ButtonGroup,
 } from "@chakra-ui/react";
 import axios from "axios";
+import SideNav from "../components/sidenav/SideNav";
 
 const FarmerDashboard = () => {
   const currentUser = useAuth();
@@ -109,7 +110,7 @@ const FarmerDashboard = () => {
       <Flex
         minH="80vh"
       >
-
+        <SideNav/>
       </Flex>
     </>
   );
