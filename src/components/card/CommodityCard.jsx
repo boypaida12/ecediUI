@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-const CommodityCard = ({ cropDescription, cropName, cropPrice, name, src }) => {
+const CommodityCard = ({ cropDescription, cropName, cropPrice, name, src, link }) => {
   return (
     <>
       <Card maxW="sm">
@@ -51,7 +51,7 @@ const CommodityCard = ({ cropDescription, cropName, cropPrice, name, src }) => {
             colorScheme="green"
             ms="auto"
             as={Link}
-            to={`/learn-more/commodity-details/${name}`}
+            to={link}
           >
             Learn More
           </Button>
