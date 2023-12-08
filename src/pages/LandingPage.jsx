@@ -42,6 +42,7 @@ const LandingPage = () => {
                 key={order._id} // Use `_id` as the unique key
                 cropName={order.cropName}
                 cropDescription={order.description}
+                id={order._id}
                 // Add other properties from the order as needed
               />
             ))}
