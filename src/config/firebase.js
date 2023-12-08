@@ -31,8 +31,10 @@ export const db = getFirestore(app);
 
 const googleProvider = new GoogleAuthProvider();
 
-export const signUpWithGoogle = async () => {
+export const signUpWithGoogle = async (value) => {
   try {
+    console.log("value... ", value)
+
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
 
@@ -50,12 +52,123 @@ export const signUpWithGoogle = async () => {
       });
     }
 
+    // create user endpoint
+    postDataToBackend(
+      value,
+      user.email,
+      user.displayName,
+      user.uid
+    )
+
     return user;
   } catch (error) {
     console.error(error);
     return null;
   }
 };
+
+const postDataToBackend = async (farmerString, email, displayName, uuid) => {
+  const apiUrl = 'https://ecedilink.onrender.com/user';
+
+  const data = {
+    farmer: farmerString,
+    generalInfo: {
+      email: email,
+      name: displayName,
+      phone: '1234567890',
+      uuid: uuid,
+      countrycode: 'US',
+      latitude: 6.700071,
+      longitude: -1.630783,
+      usertype: farmerString,
+      walletId: 'kjdsbsfkjfkj',
+      creditScore: 0,
+      landSize: 150,
+      kycLevel: 'MEDIUM',
+    },
+    debts: [
+      { amount: 5000, bank: 'Bank A' },
+      { amount: 3000, bank: 'Bank B' },
+    ],
+    incomes: [],
+  };
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log('Response from server:', responseData.generalInfo);
+      createWallet(
+        responseData.generalInfo.uuid,
+      )
+    } else {
+      console.error('Error:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+};
+
+const createWallet = async (uuid) => {
+  const apiUrl = 'https://ecedilink.onrender.com/escrow/v1/create-wallet';
+
+  const data = {
+    userId: uuid,
+    tokenId: '0.0.3945755',
+    kycLevel: 'UNVERIFIED',
+    countryCode: 'GH',
+    institutionName: 'CreditLink, Inc.',
+  };
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log('createWallet:', responseData.id);
+    } else {
+      console.error('Error:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+};
+
+async function updateWallet(userId, walletId) {
+  const endpoint = 'https://ecedilink.onrender.com/user/657127c988a6bb65775dcb45/update-wallet';
+
+  try {
+    const response = await axios.post(endpoint, {
+      walletId: walletId,
+    });
+
+    if (response.status === 200) {
+      console.log('Wallet updated successfully');
+      console.log('Response:', response.data);
+      return response.data; // You can return the response data if needed
+    } else {
+      console.error('Failed to update wallet');
+      console.error('Response:', response.data); // Log the error response
+      return null;
+    }
+  } catch (error) {
+    console.error('Error updating wallet:', error.message);
+    return null;
+  }
+}
 
 export const signInWithGoogle = async () => {
   try {

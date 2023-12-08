@@ -12,7 +12,7 @@ const FarmerAuth = () => {
   const handleGoogleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await signUpWithGoogle();
+      await signUpWithGoogle("Farmer");
       toast({
         description: "Successfully Registered",
         duration: 3000,
