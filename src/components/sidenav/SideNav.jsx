@@ -58,7 +58,7 @@ export default function SideNav() {
         </Flex>
         <Flex flexDir='column' alignItems='left' mt={10}>
             <Text textAlign='left'>Balance</Text>
-            <Button mt='2'>10,000 Ghs</Button>
+            <Button mt='2'>500 ₵</Button>
         </Flex>
         
         <Divider mt={5}/>
@@ -69,6 +69,7 @@ export default function SideNav() {
         </Flex>
     </Flex>
 </Box>
-    
+
+  
   )
 }
